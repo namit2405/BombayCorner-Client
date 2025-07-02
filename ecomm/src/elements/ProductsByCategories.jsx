@@ -34,7 +34,7 @@ const CategoryProductShowcase = ({ selectedCategory }) => {
 
   // Fetch categories
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/categories/')
+    axios.get('http://api.namits.shop/categories/')
       .then(res => setCategories(res.data.slice(0, 8)))
       .catch(err => console.error(err));
   }, []);
@@ -49,7 +49,7 @@ const CategoryProductShowcase = ({ selectedCategory }) => {
         let allProducts = [];
         for (const category of categories) {
           const res = await axios.get(
-            `http://127.0.0.1:8000/products/categories/${category.id}/`
+            `http://api.namits.shop/products/categories/${category.id}/`
           );
           allProducts = [...allProducts, ...res.data];
         }
@@ -59,7 +59,7 @@ const CategoryProductShowcase = ({ selectedCategory }) => {
         const category = categories.find((c) => c.name === activeCategory);
         if (category) {
           const res = await axios.get(
-            `http://127.0.0.1:8000/products/categories/${category.id}/`
+            `http://api.namits.shop/products/categories/${category.id}/`
           );
           setProducts(res.data.slice(0, 8));
         }

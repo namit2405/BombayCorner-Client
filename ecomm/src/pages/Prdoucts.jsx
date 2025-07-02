@@ -55,13 +55,13 @@ const ProductsPage = () => {
     setAppliedFilters(updatedFilters);
     setSearchQuery(search);
 
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", updatedFilters, search);
+    const url = buildApiUrl("http://api.namits.shop/products/", updatedFilters, search);
     setCurrentPageUrl(url);
   }, [location.search, setSearchQuery]);
 
   // Update product list whenever filters or searchQuery change
   useEffect(() => {
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", appliedFilters, searchQuery);
+    const url = buildApiUrl("http://api.namits.shop/products/", appliedFilters, searchQuery);
     setCurrentPageUrl(url);
   }, [appliedFilters, searchQuery]);
 
@@ -83,7 +83,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/categories/");
+        const res = await axios.get("http://api.namits.shop/categories/");
         setCategories(res.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -105,7 +105,7 @@ const ProductsPage = () => {
 
   const applyFilters = () => {
     setAppliedFilters(filters);
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", filters, searchQuery);
+    const url = buildApiUrl("http://api.namits.shop/products/", filters, searchQuery);
     setCurrentPageUrl(url);
   };
 
@@ -118,7 +118,7 @@ const ProductsPage = () => {
     };
     setFilters(cleared);
     setAppliedFilters(cleared);
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", cleared, searchQuery);
+    const url = buildApiUrl("http://api.namits.shop/products/", cleared, searchQuery);
     setCurrentPageUrl(url);
   };
 

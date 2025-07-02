@@ -23,7 +23,7 @@ const EditProfile = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://127.0.0.1:8000/user/profile/", {
+        const res = await fetch("http://api.namits.shop/user/profile/", {
           headers: { Authorization: `Token ${token}` },
         });
         const data = await res.json();
@@ -32,14 +32,14 @@ const EditProfile = () => {
           email: data.email || "",
           phone: data.phone || "",
           dob: data.dob || "",
-          image: "http://127.0.0.1:8000" + data.image || "",
+          image: "http://api.namits.shop" + data.image || "",
           street: data.street || "",
           city: data.city || "",
           state: data.state || "",
           pincode: data.pincode || "",
         });
         console.log(data);
-        setimagePreview("http://127.0.0.1:8000" + data.image || "");
+        setimagePreview("http://api.namits.shop" + data.image || "");
       } catch (err) {
         // handle error
       } finally {
@@ -80,7 +80,7 @@ formData.append("state", form.state);
 formData.append("pincode", form.pincode);
 
     try {
-      await fetch("http://127.0.0.1:8000/user/profile/", {
+      await fetch("http://api.namits.shop/user/profile/", {
         method: "PUT",
         headers: {
           Authorization: `Token ${token}`,

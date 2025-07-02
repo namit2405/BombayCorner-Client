@@ -12,7 +12,7 @@ const ViewProfile = () => {
       try {
         // Replace with your actual API endpoint and auth if needed
         const token = localStorage.getItem("token");
-        const res = await fetch("http://127.0.0.1:8000/user/profile/", {
+        const res = await fetch("http://api.namits.shop/user/profile/", {
           headers: { Authorization: `Token ${localStorage.getItem("token")}` },
         });
         const data = await res.json();

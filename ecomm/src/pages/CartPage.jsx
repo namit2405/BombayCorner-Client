@@ -30,7 +30,7 @@ const CartPage = () => {
   const fetchCart = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://127.0.0.1:8000/cart/", {
+      const res = await axios.get("http://api.namits.shop/cart/", {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
@@ -70,7 +70,7 @@ const CartPage = () => {
     setLoading(true);
     try {
       await axios.put(
-        `http://127.0.0.1:8000/cart/update/${itemId}/`,
+        `http://api.namits.shop/cart/update/${itemId}/`,
         { quantity: newQuantity },
         {
           headers: {
@@ -90,7 +90,7 @@ const CartPage = () => {
   const removeItem = async (itemId) => {
     setLoading(true);
     try {
-      await axios.delete(`http://127.0.0.1:8000/cart/remove/${itemId}/`, {
+      await axios.delete(`http://api.namits.shop/cart/remove/${itemId}/`, {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
@@ -133,7 +133,7 @@ const CartPage = () => {
         // After successful payment
         axios
           .post(
-            "http://127.0.0.1:8000/checkout/",
+            "http://api.namits.shop/checkout/",
             { address },
             {
               headers: {
@@ -239,7 +239,7 @@ const CartPage = () => {
               <div key={item.id} className="card mb-3 cart-item">
                 <div className="card-body d-flex align-items-center">
                   <img
-                    src={`http://127.0.0.1:8000${item.product.image}`}
+                    src={`http://api.namits.shop${item.product.image}`}
                     alt={item.product.title}
                     className="cart-item-img"
                   />
