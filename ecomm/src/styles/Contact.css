@@ -1,0 +1,108 @@
+/* Modern Minimalist Theme Update */
+.contact-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f7f7f7 60%, #b0bec5 100%);
+  padding: 60px 20px;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 30px #b0bec533;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.contact-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #263238;
+}
+
+.contact-card p {
+  text-align: center;
+  color: #455a64;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #263238;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #b0bec5;
+  border-radius: 10px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #f7f7f7;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #455a64;
+  box-shadow: 0 0 0 2px #b0bec533;
+}
+
+.submit-btn {
+  background-color: #455a64;
+  color: #fff;
+  padding: 12px 24px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 2px 8px #26323822;
+}
+
+.submit-btn:hover {
+  background-color: #263238;
+}
+
+.success-msg,
+.error-msg {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.success-msg {
+  color: #28a745;
+}
+
+.error-msg {
+  color: #dc3545;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

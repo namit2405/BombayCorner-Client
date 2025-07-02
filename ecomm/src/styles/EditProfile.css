@@ -1,0 +1,111 @@
+/* Modern Minimalist Theme Update */
+.edit-profile-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #f7f7f7 60%, #b0bec5 100%);
+  padding: 2rem 0;
+}
+
+.edit-profile-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 4px 24px #b0bec533;
+  padding: 2.5rem 2.2rem;
+  min-width: 340px;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-profile-card h2 {
+  color: #263238;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.edit-profile-columns {
+  display: flex;
+  gap: 2.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.edit-profile-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  color: #263238;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"] {
+  padding: 0.6em 1em;
+  border-radius: 10px;
+  border: 1.5px solid #b0bec5;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s;
+  background: #f7f7f7;
+}
+
+.form-group input:focus {
+  border: 1.5px solid #455a64;
+}
+
+.profile-photo-preview {
+  margin-top: 0.7em;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px #b0bec533;
+}
+
+.save-profile-btn {
+  background: #455a64;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 0.7em 2em;
+  font-weight: 700;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 8px #26323822;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  margin-top: 1.2rem;
+  cursor: pointer;
+}
+
+.save-profile-btn:hover {
+  background: #263238;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .edit-profile-card {
+    max-width: 98vw;
+    padding: 1.2rem 0.7rem;
+  }
+  .edit-profile-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

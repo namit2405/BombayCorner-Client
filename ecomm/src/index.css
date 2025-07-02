@@ -1,0 +1,220 @@
+/* Navbar styles */
+.navbar {
+  padding: 0.5rem 1rem;
+  background-color: #24292f; /* Dark gray for a modern look */
+  transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+  background-color: #1b1f23;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #f0c14b;
+}
+
+.nav-link {
+  margin-left: 1rem;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f0c14b;
+}
+
+.searchbar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.searchbar-container .inputBox_container {
+  max-width: 30em;
+  width: 100%;
+}
+
+
+
+
+
+/* Optional dropdown animation (using Animate.css CDN) */
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+/* cart */
+/* From Uiverse.io by faxriddin20 */ 
+.button {
+  outline: 0 !important;
+  border: 0 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+
+.btn::after {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s linear;
+  top: 115%;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  transition: 0.2s linear;
+}
+
+.icon path {
+  fill: white;
+  transition: 0.2s linear;
+}
+
+.btn:hover > .icon {
+  transform: scale(1.2);
+}
+
+.btn:hover > .icon path {
+  fill: rgb(177, 139, 189);
+}
+
+.btn:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: 105%;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.help-button {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-button:hover,
+.help-button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(229, 231, 235, 1);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip,
+.help-button:focus + .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  }
+}
+
+.tooltip strong {
+  animation: glow 2s infinite;
+  font-weight: 600;
+}
+
+.tooltip i {
+  margin-right: 6px;
+  color: #6366f1;
+}
+
+@media (max-width: 768px) {
+  .tooltip {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .help-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

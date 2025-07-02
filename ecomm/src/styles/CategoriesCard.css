@@ -1,0 +1,76 @@
+/* Modern Minimalist Theme Update */
+.category-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px #b0bec533;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  margin: 18px;
+  border: 1.5px solid #b0bec5;
+}
+
+.category-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px #b0bec533;
+}
+
+.category-card-img-wrapper {
+  width: 100%;
+  height: 140px;              /* Fixed height for all category images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid #b0bec5;
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f7f7f7;
+  display: block;
+}
+
+.category-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #263238;
+  margin: 0;
+}
+
+.categories-section {
+  padding: 2rem 0;
+  background: linear-gradient(120deg, #f7f7f7 60%, #b0bec5 100%);
+}
+
+.categories-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #263238;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #b0bec522;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #455a64;
+}
+
+.swiper-pagination-bullet {
+  background: #90a4ae;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #263238;
+  opacity: 1;
+}
+
