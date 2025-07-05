@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import api from "../axios";
 import { useNavigate } from "react-router-dom";
 
 const CartContext = createContext();
@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.get("http://127.0.0.1:8000/cart/", {
+      const res = await api.get("/cart/", {
         headers: { Authorization: `Token ${localStorage.getItem("token")}` },
       });
       const items = res.data.items || [];
@@ -47,8 +47,8 @@ export const CartProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/cart/add/",
+      const res = await api.post(
+        "/cart/add/",
         { product_id: productId, quantity: 1 },
         { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
       );
@@ -72,8 +72,8 @@ export const CartProvider = ({ children }) => {
     }
     const newQuantity = (cartItems[productId]?.quantity || 0) + 1;
     try {
-      await axios.post(
-        "http://127.0.0.1:8000/cart/add/",
+      await api.post(
+        "/cart/add/",
         { product_id: productId, quantity: 1 },
         { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
       );
@@ -96,8 +96,8 @@ export const CartProvider = ({ children }) => {
     const newQuantity = (cartItems[productId]?.quantity || 1) - 1;
     if (newQuantity === 0) {
       try {
-        await axios.delete(
-          `http://127.0.0.1:8000/cart/remove/${cartItems[productId].id}/`,
+        await api.delete(
+          `/cart/remove/${cartItems[productId].id}/`,
           { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
         );
         setCartItems((prev) => {
@@ -111,8 +111,8 @@ export const CartProvider = ({ children }) => {
       }
     } else {
       try {
-        await axios.put(
-          `http://127.0.0.1:8000/cart/update/${cartItems[productId].id}/`,
+        await api.put(
+          `/cart/update/${cartItems[productId].id}/`,
           { quantity: newQuantity },
           { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
         );

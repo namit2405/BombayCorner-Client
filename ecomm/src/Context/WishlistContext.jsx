@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import api from "../axios";
 import { useNavigate } from "react-router-dom";
 
 const WishlistContext = createContext();
@@ -19,7 +19,7 @@ export const WishlistProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await axios.get("http://127.0.0.1:8000/wishlist/", {
+      const res = await api.get("/wishlist/", {
         headers: { Authorization: `Token ${localStorage.getItem("token")}` },
       });
       setWishlist(res.data);
@@ -42,8 +42,8 @@ export const WishlistProvider = ({ children }) => {
       return;
     }
     try {
-      await axios.post(
-        "http://127.0.0.1:8000/wishlist/",
+      await api.post(
+        "/wishlist/",
         { product_id: productId },
         { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
       );
@@ -56,13 +56,13 @@ export const WishlistProvider = ({ children }) => {
   // Remove from wishlist
   const removeFromWishlist = async (productId) => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/wishlist/", {
+      const res = await api.get("/wishlist/", {
         headers: { Authorization: `Token ${localStorage.getItem("token")}` },
       });
       const item = res.data.find(item => item.product.id === productId);
       if (item) {
-        await axios.delete(
-          `http://127.0.0.1:8000/wishlist/${item.id}/`,
+        await api.delete(
+          `/wishlist/${item.id}/`,
           { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
         );
         fetchWishlist();
