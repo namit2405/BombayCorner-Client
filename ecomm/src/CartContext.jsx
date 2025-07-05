@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import api from "../axios";
+import api from "./axios";
 import { useNavigate } from "react-router-dom";
 
 const CartContext = createContext();
