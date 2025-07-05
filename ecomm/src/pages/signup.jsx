@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from '../axios';
+import api from '../axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from "../elements/Loader";
 import PopupModal from '../elements/PopUp';
@@ -25,7 +25,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("signup/", { username, email, password });
+      await api.post("signup/", { username, email, password });
       setModal({
         show: true,
         title: "Signup Successful!",
@@ -55,7 +55,7 @@ const Signup = () => {
     }
     setSendingOtp(true);
     try {
-      await axios.post("send-otp/", { email });
+      await api.post("send-otp/", { email });
       setOtpSent(true);
       showModal("OTP Sent", "Please check your email for the verification code.");
     } catch {
@@ -72,7 +72,7 @@ const Signup = () => {
       return;
     }
     try {
-      const res = await axios.post("verify-otp/", { email, otp });
+      const res = await api.post("verify-otp/", { email, otp });
       if (res.data.verified) {
         setEmailVerified(true);
         showModal("Verified", "Email verified successfully.");

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import axios from "axios";
+import api from "../axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/SearchBar.css";
 import { useSearch } from "../SearchContext";
@@ -23,8 +23,8 @@ const SearchBar = () => {
         return;
       }
       try {
-        const res = await axios.get(
-          `http://127.0.0.1:8000/products/search-suggestions/?q=${searchQuery}`
+        const res = await api.get(
+          `/products/search-suggestions/?q=${searchQuery}`
         );
         setSuggestions(res.data);
       } catch (error) {

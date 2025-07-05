@@ -10,12 +10,13 @@ import {
 import "../styles/Footer.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../axios";
 
 const Footer = () => {
-   const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/categories/")
+    api.get("/categories/")
       .then((res) => setCategories(res.data))
       .catch((err) => console.error("Error fetching categories", err));
   }, []);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from '../axios';
+import api from '../axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from "../elements/Loader";
 import PopupModal from "../elements/PopUp";
@@ -15,7 +15,7 @@ const OrderStatusPage = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await axiosInstance.get(`/order/status/${orderId}/`);
+        const response = await api.get(`/order/status/${orderId}/`);
         setOrder(response.data);
       } catch (error) {
         console.error('Error fetching order:', error);
@@ -29,7 +29,7 @@ const handleCancelOrder = async () => {
   if (order.status === 'Pending' || order.status === 'Confirmed') {
     setLoading(true);
     try {
-      await axiosInstance.patch(`/order/${order.id}/cancel/`);
+      await api.patch(`/order/${order.id}/cancel/`);
       setOrder({ ...order, status: 'Cancelled' });
       setPopup({
         show: true,

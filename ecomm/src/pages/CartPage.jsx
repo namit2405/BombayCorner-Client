@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../axios";
+import api, { myBaseUrl } from "../axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/CartPage.css";
 import Loader from "../elements/Loader"; // Adjust path if needed
@@ -30,7 +30,7 @@ const CartPage = () => {
   const fetchCart = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://127.0.0.1:8000/cart/", {
+      const res = await api.get("/cart/", {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
@@ -69,8 +69,8 @@ const CartPage = () => {
     if (newQuantity < 1) return;
     setLoading(true);
     try {
-      await axios.put(
-        `http://127.0.0.1:8000/cart/update/${itemId}/`,
+      await api.put(
+        `/cart/update/${itemId}/`,
         { quantity: newQuantity },
         {
           headers: {
@@ -90,7 +90,7 @@ const CartPage = () => {
   const removeItem = async (itemId) => {
     setLoading(true);
     try {
-      await axios.delete(`http://127.0.0.1:8000/cart/remove/${itemId}/`, {
+      await api.delete(`/cart/remove/${itemId}/`, {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
@@ -131,9 +131,9 @@ const CartPage = () => {
       description: "Test Transaction",
       handler: function (response) {
         // After successful payment
-        axios
+        api
           .post(
-            "http://127.0.0.1:8000/checkout/",
+            "/checkout/",
             { address },
             {
               headers: {
@@ -239,7 +239,7 @@ const CartPage = () => {
               <div key={item.id} className="card mb-3 cart-item">
                 <div className="card-body d-flex align-items-center">
                   <img
-                    src={`http://127.0.0.1:8000${item.product.image}`}
+                    src={`${myBaseUrl}${item.product.image}`}
                     alt={item.product.title}
                     className="cart-item-img"
                   />

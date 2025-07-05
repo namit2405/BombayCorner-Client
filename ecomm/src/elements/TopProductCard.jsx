@@ -8,6 +8,7 @@ import "../styles/TopProductCard.css";
 import { useCart } from "../CartContext";
 import { useWishlist } from "../Context/WishlistContext";
 import { Link } from "react-router-dom";
+import api from "../axios";
 
 const TopProductCard = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +20,7 @@ const TopProductCard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/products/top-rated/");
+        const res = await api.get("/products/top-rated/");
         const data = await res.json();
         setProducts(data.slice(0, 12));
       } catch (error) {

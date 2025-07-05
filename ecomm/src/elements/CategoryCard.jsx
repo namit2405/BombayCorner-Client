@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../styles/CategoriesCard.css";
+import api from "../axios";
 
 const CategoriesCard = ({ onCategoryClick }) => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +14,7 @@ const CategoriesCard = ({ onCategoryClick }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/categories/");
+        const res = await api.get("/categories/");
         const data = await res.json();
         setCategories(data);
       } catch (error) {

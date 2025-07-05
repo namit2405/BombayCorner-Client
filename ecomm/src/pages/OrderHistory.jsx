@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from '../axios';
+import api from '../axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/OrderHistory.css'; // custom CSS
 import PopupModal from "../elements/PopUp";
@@ -29,7 +29,7 @@ const OrderHistoryPage = () => {
         return;
       }
       try {
-        const response = await axiosInstance.get('/order/history/');
+        const response = await api.get('/order/history/');
         if (Array.isArray(response.data)) {
           setOrders(response.data);
         } else {

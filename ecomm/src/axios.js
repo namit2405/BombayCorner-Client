@@ -21,4 +21,5 @@ instance.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
+export { myBaseUrl };
 export default instance;

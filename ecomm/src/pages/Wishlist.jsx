@@ -4,6 +4,7 @@ import { useWishlist } from "../Context/WishlistContext";
 import "../styles/Wishlist.css";
 import Loader from "../elements/Loader"; 
 import PopupModal from "../elements/PopUp";
+import { myBaseUrl } from "../axios";
 
 const WishlistPage = () => {
   const { wishlist, removeFromWishlist, fetchWishlist } = useWishlist();
@@ -73,7 +74,7 @@ const WishlistPage = () => {
                 </button>
               </div>
               <img
-                src={`http://127.0.0.1:8000${item.product.image}`}
+                src={`${myBaseUrl}${item.product.image}`}
                 alt={item.product.title}
                 className="wishlist-card-img"
               />

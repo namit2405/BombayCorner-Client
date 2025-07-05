@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import axios from '../axios';
+import api from '../axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -29,7 +29,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`/products/${id}/`);
+        const res = await api.get(`/products/${id}/`);
         setProduct(res.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -42,7 +42,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchRelated = async () => {
       try {
-        const res = await axios.get('/products/');
+        const res = await api.get('/products/');
         const related = res.data.results.filter(
           (p) => p.category.id === product?.category.id && p.id !== product.id
         );
@@ -58,7 +58,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`/reviews/?product=${id}`);
+        const res = await api.get(`/reviews/?product=${id}`);
         setReviews(res.data);
       } catch (err) {
         console.error("Error fetching reviews:", err);
@@ -73,7 +73,7 @@ const ProductDetailPage = () => {
       return;
     }
     try {
-      await axios.post(
+      await api.post(
         "/reviews/",
         { product_id: id, rating: newRating, comment: newComment },
         { headers: { Authorization: `Token ${localStorage.getItem("token")}` } }
@@ -81,7 +81,7 @@ const ProductDetailPage = () => {
       setNewRating(0);
       setNewComment("");
       // Refresh reviews
-      const res = await axios.get(`/reviews/?product=${id}`);
+      const res = await api.get(`/reviews/?product=${id}`);
       setReviews(res.data);
     } catch (err) {
       console.error("Error submitting review:", err);

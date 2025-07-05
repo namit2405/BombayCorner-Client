@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Profile.css";
+import api, { myBaseUrl } from "../axios";
 
 const ViewProfile = () => {
   const [user, setUser] = useState(null);
@@ -12,7 +13,7 @@ const ViewProfile = () => {
       try {
         // Replace with your actual API endpoint and auth if needed
         const token = localStorage.getItem("token");
-        const res = await fetch("http://127.0.0.1:8000/user/profile/", {
+        const res = await api.get("/user/profile/", {
           headers: { Authorization: `Token ${localStorage.getItem("token")}` },
         });
         const data = await res.json();
@@ -39,7 +40,7 @@ const ViewProfile = () => {
       <div className="profile-card">
         <div className="profile-photo-section">
           {user.image ? (
-            <img src={"http://127.0.0.1:8000" + user.image} alt="Profile" className="profile-photo" />
+            <img src={`${myBaseUrl}${user.image}`} alt="Profile" className="profile-photo" />
           ) : (
             <div className="profile-photo-placeholder">
               <i className="fas fa-user"></i>

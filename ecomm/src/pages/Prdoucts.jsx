@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api, { myBaseUrl } from "../axios";
 import { FaStar } from "react-icons/fa";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "../styles/Products.css";
@@ -55,13 +55,13 @@ const ProductsPage = () => {
     setAppliedFilters(updatedFilters);
     setSearchQuery(search);
 
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", updatedFilters, search);
+    const url = buildApiUrl(`${myBaseUrl}products/`, updatedFilters, search);
     setCurrentPageUrl(url);
   }, [location.search, setSearchQuery]);
 
   // Update product list whenever filters or searchQuery change
   useEffect(() => {
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", appliedFilters, searchQuery);
+    const url = buildApiUrl(`${myBaseUrl}products/`, appliedFilters, searchQuery);
     setCurrentPageUrl(url);
   }, [appliedFilters, searchQuery]);
 
@@ -69,7 +69,7 @@ const ProductsPage = () => {
     if (!currentPageUrl) return;
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(currentPageUrl);
+        const res = await api.get(currentPageUrl.replace(myBaseUrl, ""));
         setProducts(res.data.results);
         setNextPage(res.data.next);
         setPrevPage(res.data.previous);
@@ -83,7 +83,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/categories/");
+        const res = await api.get("/categories/");
         setCategories(res.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -105,7 +105,7 @@ const ProductsPage = () => {
 
   const applyFilters = () => {
     setAppliedFilters(filters);
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", filters, searchQuery);
+    const url = buildApiUrl(`${myBaseUrl}products/`, filters, searchQuery);
     setCurrentPageUrl(url);
   };
 
@@ -118,7 +118,7 @@ const ProductsPage = () => {
     };
     setFilters(cleared);
     setAppliedFilters(cleared);
-    const url = buildApiUrl("http://127.0.0.1:8000/products/", cleared, searchQuery);
+    const url = buildApiUrl(`${myBaseUrl}products/`, cleared, searchQuery);
     setCurrentPageUrl(url);
   };
 
