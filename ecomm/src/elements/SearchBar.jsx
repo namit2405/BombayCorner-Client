@@ -24,7 +24,7 @@ const SearchBar = () => {
       }
       try {
         const res = await axios.get(
-          `http://api.namits.shop/products/search-suggestions/?q=${searchQuery}`
+          `http://127.0.0.1:8000/products/search-suggestions/?q=${searchQuery}`
         );
         setSuggestions(res.data);
       } catch (error) {

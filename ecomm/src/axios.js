@@ -1,7 +1,10 @@
 import axios from "axios"
 
+const isDevelopment =  import.meta.env.MODE === 'development'
+const myBaseUrl = isDevelopment ? import.meta.env.VITE_API_BASE_URL_LOCAL : import.meta.env.VITE_API_BASE_URL_DEPLOY
+
 const instance = axios.create({
-    baseURL :"https://api.namits.shop/",
+    baseURL : myBaseUrl,
     headers : {
         "Content-Type" : "application/json"
     },

@@ -13,7 +13,7 @@ const CategoriesCard = ({ onCategoryClick }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://api.namits.shop/categories/");
+        const res = await fetch("http://127.0.0.1:8000/categories/");
         const data = await res.json();
         setCategories(data);
       } catch (error) {

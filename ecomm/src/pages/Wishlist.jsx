@@ -73,7 +73,7 @@ const WishlistPage = () => {
                 </button>
               </div>
               <img
-                src={`http://api.namits.shop${item.product.image}`}
+                src={`http://127.0.0.1:8000${item.product.image}`}
                 alt={item.product.title}
                 className="wishlist-card-img"
               />
