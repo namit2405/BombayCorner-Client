@@ -15,7 +15,7 @@ const CategoriesCard = ({ onCategoryClick }) => {
     const fetchCategories = async () => {
       try {
         const res = await api.get("/categories/");
-        const data = await res.json();
+        const data = await res.data;
         setCategories(data);
       } catch (error) {
         console.error("Error fetching categories:", error);
