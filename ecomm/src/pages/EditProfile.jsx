@@ -27,7 +27,7 @@ const EditProfile = () => {
         const res = await api.get("/user/profile/", {
           headers: { Authorization: `Token ${token}` },
         });
-        const data = await res.json();
+        const data = await res.data;
         setForm({
           username: data.username || "",
           email: data.email || "",
@@ -81,13 +81,12 @@ formData.append("state", form.state);
 formData.append("pincode", form.pincode);
 
     try {
-      await api.get("/user/profile/", {
-        method: "PUT",
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-        body: formData,
-      });
+      await api.put("/user/profile/", formData, {
+  headers: {
+    Authorization: `Token ${token}`,
+    "Content-Type": "multipart/form-data",
+  },
+});
       navigate("/profile");
     } catch (err) {
       // handle error

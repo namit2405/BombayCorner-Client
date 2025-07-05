@@ -21,7 +21,7 @@ const TopProductCard = () => {
     const fetchProducts = async () => {
       try {
         const res = await api.get("/products/top-rated/");
-        const data = await res.json();
+        const data = await res.data;
         setProducts(data.slice(0, 12));
       } catch (error) {
         console.error("Error fetching products:", error);

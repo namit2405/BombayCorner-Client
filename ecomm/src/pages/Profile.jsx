@@ -14,10 +14,9 @@ const ViewProfile = () => {
         // Replace with your actual API endpoint and auth if needed
         const token = localStorage.getItem("token");
         const res = await api.get("/user/profile/", {
-          headers: { Authorization: `Token ${localStorage.getItem("token")}` },
+        headers: { Authorization: `Token ${localStorage.getItem("token")}` },
         });
-        const data = await res.json();
-        setUser(data);
+        (res.data);
       } catch (err) {
         setUser(null);
       } finally {
