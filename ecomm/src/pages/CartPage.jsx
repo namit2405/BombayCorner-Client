@@ -124,7 +124,7 @@ const CartPage = () => {
     );
 
     const options = {
-      key: "rzp_test_5N99QEcFwfdfDU",
+      key: "rzp_live_Jbk3aa1rEDJ5cG",
       currency: "INR",
       amount: amount * 100,
       name: "My Store",
