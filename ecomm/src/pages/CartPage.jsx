@@ -118,72 +118,50 @@ const CartPage = () => {
       return;
     }
 
-    const amount = cartItems.reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
+    // 🔑 Get Razorpay order from backend
+  const orderRes = await api.post("/create-razorpay-order/", {}, {
+    headers: { Authorization: `Token ${localStorage.getItem("token")}` }
+  });
+
+  const { key, order_id, amount, currency } = orderRes.data;
 
     const options = {
-      key: "rzp_live_Jbk3aa1rEDJ5cG",
-      currency: "INR",
-      amount: amount * 100,
-      name: "My Store",
-      description: "Test Transaction",
-      handler: function (response) {
-        // After successful payment
-        api
-          .post(
-            "/checkout/",
-            { address },
-            {
-              headers: {
-                Authorization: `Token ${localStorage.getItem("token")}`,
-              },
-            }
-          )
-          .then((res) => {
-            setLoading(false);
-            setPopup({
-              show: true,
-              title: "Order Confirmed!",
-              message: (
-                <span>
-                  Payment Successful!<br />
-                  Payment ID: <b>{response.razorpay_payment_id}</b>
-                  <br />
-                  Your order has been placed successfully!
-                </span>
-              ),
+        key,
+        currency,
+        amount,
+        order_id,
+        name: "My Store",
+        description: "Order Payment",
+        handler: async (response) => {
+          try {
+            await api.post("/checkout/", {
+              address,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+            }, {
+              headers: { Authorization: `Token ${localStorage.getItem("token")}` },
             });
-            setTimeout(() => {
-              setPopup({ show: false, title: "", message: "" });
-              window.location.href = `/order/history/`;
-            }, 2000);
-          })
-          .catch((error) => {
             setLoading(false);
-            setPopup({
-              show: true,
-              title: "Order Error",
-              message: "Failed to place order after payment. Please contact support.",
-            });
-          });
-      },
-      prefill: {
-        name: localStorage.getItem("username") || "Customer",
-        email: localStorage.getItem("email") || "customer@example.com",
-      },
-      theme: {
-        color: "#7b2ff2",
-      },
-      modal: {
-        ondismiss: () => setLoading(false),
-      },
-    };
+            setPopup({ show: true, title: "Order Confirmed!", message: "Payment Successful!" });
+            setTimeout(() => { setPopup({ show: false, title: "", message: "" }); navigate("/order/history"); }, 2000);
+          } catch (error) {
+            console.error("Order placement error:", error);
+            setLoading(false);
+            setPopup({ show: true, title: "Order Error", message: "Failed to place order." });
+          }
+        },
+        prefill: {
+          name: localStorage.getItem("username") || "Customer",
+          email: localStorage.getItem("email") || "customer@example.com",
+        },
+        theme: { color: "#7b2ff2" },
+        modal: { ondismiss: () => setLoading(false) },
+      };
 
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-  };
+      new window.Razorpay(options).open();
+
+    };
 
   // Checkout
  const handleCheckout = () => {
