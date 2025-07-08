@@ -157,7 +157,7 @@ useEffect(() => {
                 className="view-all-btn btn"
                   onClick={() => addToCart(product.id)}
                 >
-                  Add to Cart
+                  Add cart
                 </button>
                 </Link>
               )}
