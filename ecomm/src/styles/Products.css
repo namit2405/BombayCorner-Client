@@ -292,6 +292,10 @@
   background: #d32f2f;
 }
 
+.addtocart{
+  width : 8rem !important;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
   .row {
@@ -371,4 +375,8 @@
     margin-right: 0;  
   }
   
+}
+.prev-next-btn{
+  background-color: rgb(219, 144, 5) !important;
+  color: white !important;
 }

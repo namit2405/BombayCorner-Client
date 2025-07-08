@@ -427,11 +427,10 @@ const ProductsPage = () => {
                   </div>
                 ) : (
                   <button
-                    className="btn animated-btn"
+                    className="addtocart btn animated-btn"
                     style={{
                       backgroundColor: "rgb(235, 211, 52)",
                       padding: "10px 4%",
-                      width: "8rem",
                     }}
                     onClick={() => addToCart(product.id)}
                   >
