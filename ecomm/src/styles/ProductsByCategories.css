@@ -152,6 +152,8 @@
   transition: background 0.18s, box-shadow 0.18s !important;
   box-shadow: 0 2px 8px #b0bec522;
   letter-spacing: 0.2px;
+  width : 5rem !important;
+  height: 4rem !important;
 }
 
 .view-all-btn:hover {
