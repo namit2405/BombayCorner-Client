@@ -121,7 +121,7 @@ const handleCancelOrder = async () => {
           <ul className="list-group mb-3">
             {order.items.map((item) => (
               <li key={item.id} className="list-group-item d-flex justify-content-between">
-                <span>{item.product.title}</span>
+                <span>{item.product.title}</span>&nbsp;&nbsp;&nbsp;
                 <span>Qty: {item.quantity}</span>
               </li>
             ))}
