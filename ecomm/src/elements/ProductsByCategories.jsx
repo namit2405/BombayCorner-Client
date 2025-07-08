@@ -170,7 +170,7 @@ useEffect(() => {
       {activeCategory !== 'All' && (
         <div className="text-center mt-3">
           <button
-            className="btn btn-sm view-all-btn"
+            className="btn btn-sm view-all-btn view-all-btn-2"
             onClick={() =>
               navigate(`/products?category_id=${categories.find(c => c.name === activeCategory)?.id}`)
             }

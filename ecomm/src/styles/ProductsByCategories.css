@@ -212,6 +212,9 @@
     width : 5rem !important;
     height: 4rem !important;
   }
+    .view-all-btn-2{
+    padding: 0px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -226,5 +229,8 @@
     border-radius: 16px !important;
     width : 5rem !important;
     height: 4rem !important;
+  }
+  .view-all-btn-2{
+    padding: 0px !important;
   }
 }
