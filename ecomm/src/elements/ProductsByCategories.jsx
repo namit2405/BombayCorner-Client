@@ -127,7 +127,7 @@ useEffect(() => {
             <div className="card-buttons">
               <Link to={`/products/${product.id}`} style={{textDecoration:"none"}}>
               <button
-                className="cardbutton btn btn-primary btn-sm"
+                className="view-all-btn btn btn-primary btn-sm"
               >
                 View Product
               </button>
@@ -137,7 +137,7 @@ useEffect(() => {
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <button
                     onClick={() => decrementQuantity(product.id)}
-                    style={{ backgroundColor: "rgb(235, 211, 52)", border: "none", padding: "4px 8px" }}
+                    style={{ backgroundColor: " #263238", border: "none", padding: "4px 8px", color:"white" }}
                   >
                     -
                   </button>
@@ -146,23 +146,20 @@ useEffect(() => {
                   </span>
                   <button
                     onClick={() => incrementQuantity(product.id)}
-                    style={{ backgroundColor: "rgb(235, 211, 52)", border: "none", padding: "4px 8px" }}
+                    style={{ backgroundColor: " #263238", border: "none", padding: "4px 8px", color:"white" }}
                   >
                     +
                   </button>
                 </div>
               ) : (
+                <Link style={{textDecoration:"none"}}>
                 <button
-                  className="btn animated-btn"
-                  style={{
-                    backgroundColor: "rgb(235, 211, 52)",
-                    padding: "10px 4%",
-                    width: "8rem",
-                  }}
+                className="view-all-btn btn"
                   onClick={() => addToCart(product.id)}
                 >
                   Add to Cart
                 </button>
+                </Link>
               )}
             </div>
           </div>
