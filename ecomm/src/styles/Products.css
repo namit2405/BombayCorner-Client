@@ -379,4 +379,5 @@
 .prev-next-btn{
   background-color: rgb(219, 144, 5) !important;
   color: white !important;
+  width: 5rem !important;
 }
