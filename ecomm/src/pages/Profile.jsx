@@ -16,8 +16,9 @@ const ViewProfile = () => {
         const res = await api.get("/user/profile/", {
         headers: { Authorization: `Token ${localStorage.getItem("token")}` },
         });
-        (res.data);
+        setUser(res.data);  
       } catch (err) {
+        console.error("Error loading user profile:", err);
         setUser(null);
       } finally {
         setLoading(false);
