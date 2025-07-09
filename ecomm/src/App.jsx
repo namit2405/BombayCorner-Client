@@ -18,7 +18,7 @@ import Footer from "./elements/Footer";
 import CustomerServicePage from "./pages/Help";
 import { Routes, Route } from "react-router-dom";
 import { useCart } from "./CartContext";
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "./elements/ScrollToTop";
 
 const App = () => {
   const { cartItems } = useCart();
