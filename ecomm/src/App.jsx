@@ -17,7 +17,8 @@ import EditProfile from "./pages/EditProfile";
 import Footer from "./elements/Footer";
 import CustomerServicePage from "./pages/Help";
 import { Routes, Route } from "react-router-dom";
-import { useCart } from "./CartContext"; 
+import { useCart } from "./CartContext";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   const { cartItems } = useCart();
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <div>
       <NavBar cartItemCount={cartItemCount} />
+        <ScrollToTop />
       <div className="container-fluid px-0">
         <Routes>
           <Route path="/" element={<Home />} />
