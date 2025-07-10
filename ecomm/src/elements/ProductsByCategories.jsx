@@ -158,7 +158,7 @@ useEffect(() => {
                 disabled={product.quantity <= 0}
                   onClick={() => addToCart(product.id)}
                 >
-                  {product.quantity <= 0 ? "Out of Stock" : "Add Cart"}
+                  {product.quantity <= 0 ? "Soldout" : "Add Cart"}
                 </button>
                 </Link>
               )}
