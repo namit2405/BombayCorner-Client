@@ -23,14 +23,26 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        "service_49e75c4",       // ✅ Your Service ID
-        "template_f49yu0a",      // ✅ Your Template ID
-        {
-          ...formData,
-          to_email: "yourname@example.com", // ✅ Replace with your receiving email
-        },
-        "afGuRCEle4SPO2NEV"      // ✅ Your Public Key
-      );
+  "service_49e75c4",
+  "template_owner_notify",
+  {
+    user_name: formData.user_name,
+    user_email: formData.user_email,
+    message: formData.message,
+  },
+  "afGuRCEle4SPO2NEV"
+);
+
+await emailjs.send(
+  "service_49e75c4",
+  "template_f49yu0a",
+  {
+    user_name: formData.user_name,
+    user_email: formData.user_email,
+  },
+  "afGuRCEle4SPO2NEV"
+);
+
 
       setStatus({ sent: true, error: false });
       setFormData({ user_name: "", user_email: "", message: "" });
