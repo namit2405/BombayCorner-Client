@@ -428,13 +428,14 @@ const ProductsPage = () => {
                 ) : (
                   <button
                     className="addtocart btn animated-btn"
+                    disabled={product.quantity <= 0}
                     style={{
                       backgroundColor: "rgb(235, 211, 52)",
                       padding: "10px 4%",
                     }}
                     onClick={() => addToCart(product.id)}
                   >
-                    Add to Cart
+                    {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
                   </button>
                 )}
               </div>
