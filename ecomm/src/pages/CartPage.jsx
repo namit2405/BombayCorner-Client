@@ -41,7 +41,7 @@ const CartPage = () => {
       // Calculate total
       let total = 0;
       items.forEach((item) => {
-        total += item.product.price * item.quantity;
+        total += (item.product.price - item.product.discount_price) * item.quantity;
       });
       setTotalAmount(total);
     } catch (error) {
@@ -268,7 +268,7 @@ const CartPage = () => {
                   <span>
                     {item.product.title} x {item.quantity}
                   </span>
-                  <span>₹{item.product.price * item.quantity}</span>
+                  <span>₹{(item.product.price - item.product.discount_price) * item.quantity}</span>
                 </p>
               ))}
 
