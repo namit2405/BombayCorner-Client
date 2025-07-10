@@ -4,15 +4,15 @@ import "../styles/Help.css";
 const faqs = [
   {
     question: "How do I track my order?",
-    answer: "You can track your order using the 'Track Order' page in your account section.",
+    answer: "You can track your order using the 'Order Status' page in your Your Orders section.",
   },
   {
     question: "What is the return policy?",
-    answer: "We offer a 7-day return policy for all unused items in original packaging.",
+    answer: "We offer a 3-day return policy for all unused items in original packaging.",
   },
   {
     question: "How can I contact support?",
-    answer: "You can email us at support@example.com or call our helpline 9am–6pm IST.",
+    answer: "You can email us at jainnamit34@gmail.com or call our helpline 9am–6pm IST.",
   },
   // Add more FAQs here
 ];
