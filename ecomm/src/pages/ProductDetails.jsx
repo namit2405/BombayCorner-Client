@@ -149,8 +149,8 @@ const ProductDetailPage = () => {
               <button onClick={() => incrementQuantity(product.id)}>+</button>
             </div>
           ) : (
-            <button className="add-to-cart-btn" onClick={() => addToCart(product.id)}>
-              Add to Cart
+            <button className="add-to-cart-btn" disabled={product.quantity <= 0} onClick={() => addToCart(product.id)}>
+              {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
             </button>
           )}
         </div>

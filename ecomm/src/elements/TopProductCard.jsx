@@ -152,9 +152,10 @@ const TopProductCard = () => {
                           borderRadius: "4px",
                           cursor: "pointer"
                         }}
+                        disabled={product.quantity <= 0}
                         onClick={() => addToCart(product.id)}
                       >
-                        Add to Cart
+                        {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
                       </button>
                     </div>
                   )}

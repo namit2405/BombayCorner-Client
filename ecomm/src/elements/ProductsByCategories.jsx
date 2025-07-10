@@ -155,9 +155,10 @@ useEffect(() => {
                 <Link style={{textDecoration:"none"}}>
                 <button
                 className="view-all-btn btn"
+                disabled={product.quantity <= 0}
                   onClick={() => addToCart(product.id)}
                 >
-                  Add cart
+                  {product.quantity <= 0 ? "Out of Stock" : "Add Cart"}
                 </button>
                 </Link>
               )}
