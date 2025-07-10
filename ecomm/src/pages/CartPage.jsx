@@ -223,7 +223,7 @@ const CartPage = () => {
                   />
                   <div className="cart-item-details ms-3 flex-grow-1">
                     <h5>{item.product.title}</h5>
-                    <p className="mb-1">₹{item.product.price}</p>
+                    <p className="mb-1">₹{item.product.price  - item.product.discount_price}</p>
                     <div className="d-flex align-items-center">
                       <button
                         className="quantity-btn"

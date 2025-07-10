@@ -101,7 +101,7 @@ const Footer = () => {
         </p>
         <p>
           © {new Date().getFullYear()} <strong>Bombay Corner</strong>. All rights reserved.
-          Designed by <b><u>Namit Jain</u></b>
+          Designed by <a href="https://portfolio.namits.shop"><b><u>Namit Jain</u></b></a>
         </p>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "../axios"
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from "../elements/Loader";
@@ -10,6 +10,14 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState({ show: false, title: "", message: "", onClose: null });
     const navigate = useNavigate();
+
+      // 🔑 Check if user is already logged in
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate("/");  // Redirect to home or dashboard
+        }
+    }, [navigate]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
