@@ -402,7 +402,17 @@ const ProductsPage = () => {
                     }}
                   >
                     <button
-                      onClick={() => decrementQuantity(product.id)}
+                      onClick={async () => {
+                    try {
+                      await decrementQuantity(product.id);
+                    } catch (error) {
+                      if (error.message === "NOT_LOGGED_IN") {
+                        navigate("/login");
+                      } else {
+                        console.error(error);
+                      }
+                    }
+                  }}
                       style={{
                         backgroundColor: "rgb(235, 211, 52)",
                         border: "none",
@@ -415,7 +425,17 @@ const ProductsPage = () => {
                       {cartItems[product.id].quantity}
                     </span>
                     <button
-                      onClick={() => incrementQuantity(product.id)}
+                      onClick={async () => {
+                    try {
+                      await incrementQuantity(product.id);
+                    } catch (error) {
+                      if (error.message === "NOT_LOGGED_IN") {
+                        navigate("/login");
+                      } else {
+                        console.error(error);
+                      }
+                    }
+                  }}
                       style={{
                         backgroundColor: "rgb(235, 211, 52)",
                         border: "none",
@@ -433,7 +453,17 @@ const ProductsPage = () => {
                       backgroundColor: "rgb(235, 211, 52)",
                       padding: "10px 4%",
                     }}
-                    onClick={() => addToCart(product.id)}
+                    onClick={async () => {
+                    try {
+                      await addToCart(product.id);
+                    } catch (error) {
+                      if (error.message === "NOT_LOGGED_IN") {
+                        navigate("/login");
+                      } else {
+                        console.error(error);
+                      }
+                    }
+                  }}
                   >
                     {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
                   </button>

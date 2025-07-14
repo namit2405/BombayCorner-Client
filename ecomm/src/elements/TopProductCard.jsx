@@ -114,7 +114,17 @@ const TopProductCard = () => {
                   {cartItems[product.id] ? (
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "0.5rem" }}>
                       <button
-                        onClick={() => decrementQuantity(product.id)}
+                        onClick={async () => {
+                      try {
+                        await decrementQuantity(product.id);
+                      } catch (error) {
+                        if (error.message === "NOT_LOGGED_IN") {
+                          navigate("/login");
+                        } else {
+                          console.error(error);
+                        }
+                      }
+                    }}
                         style={{
                           backgroundColor: "rgb(52, 95, 235)",
                           border: "none",
@@ -127,7 +137,17 @@ const TopProductCard = () => {
                       </button>
                       <span>{cartItems[product.id].quantity}</span>
                       <button
-                        onClick={() => incrementQuantity(product.id)}
+                        onClick={async () => {
+                      try {
+                        await incrementQuantity(product.id);
+                      } catch (error) {
+                        if (error.message === "NOT_LOGGED_IN") {
+                          navigate("/login");
+                        } else {
+                          console.error(error);
+                        }
+                      }
+                    }}
                         style={{
                           backgroundColor: "rgb(52, 95, 235)",
                           border: "none",
@@ -153,7 +173,17 @@ const TopProductCard = () => {
                           cursor: "pointer"
                         }}
                         disabled={product.quantity <= 0}
-                        onClick={() => addToCart(product.id)}
+                        onClick={async () => {
+                        try {
+                          await addToCart(product.id);
+                        } catch (error) {
+                          if (error.message === "NOT_LOGGED_IN") {
+                            navigate("/login");
+                          } else {
+                            console.error(error);
+                          }
+                        }
+                      }}
                       >
                         {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
                       </button>

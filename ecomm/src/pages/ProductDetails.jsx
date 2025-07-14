@@ -144,12 +144,45 @@ const ProductDetailPage = () => {
           </div>
           {cartItems[product.id] ? (
             <div className="quantity-controls">
-              <button onClick={() => decrementQuantity(product.id)}>-</button>
+              <button onClick={async () => {
+  try {
+    await decrementQuantity(product.id);
+  } catch (error) {
+    if (error.message === "NOT_LOGGED_IN") {
+      navigate("/login");
+    } else {
+      console.error(error);
+    }
+  }
+}}
+>-</button>
               <span>{cartItems[product.id].quantity}</span>
-              <button onClick={() => incrementQuantity(product.id)}>+</button>
+              <button onClick={async () => {
+  try {
+    await incrementQuantity(product.id);
+  } catch (error) {
+    if (error.message === "NOT_LOGGED_IN") {
+      navigate("/login");
+    } else {
+      console.error(error);
+    }
+  }
+}}
+>+</button>
             </div>
           ) : (
-            <button className="add-to-cart-btn" disabled={product.quantity <= 0} onClick={() => addToCart(product.id)}>
+            <button className="add-to-cart-btn" disabled={product.quantity <= 0} onClick={async () => {
+              try {
+                await addToCart(product.id);
+              } catch (error) {
+                if (error.message === "NOT_LOGGED_IN") {
+                  navigate("/login");
+                } else {
+                  console.error(error);
+                }
+              }
+            }}
+            >
               {product.quantity <= 0 ? "Out of Stock" : "Add to Cart"}
             </button>
           )}

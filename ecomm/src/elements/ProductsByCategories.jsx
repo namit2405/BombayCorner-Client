@@ -136,7 +136,17 @@ useEffect(() => {
               {cartItems[product.id] ? (
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <button
-                    onClick={() => decrementQuantity(product.id)}
+                    onClick={async () => {
+                    try {
+                      await decrementQuantity(product.id);
+                    } catch (error) {
+                      if (error.message === "NOT_LOGGED_IN") {
+                        navigate("/login");
+                      } else {
+                        console.error(error);
+                      }
+                    }
+                  }}
                     style={{ backgroundColor: " #263238", border: "none", padding: "4px 8px", color:"white" }}
                   >
                     -
@@ -145,7 +155,17 @@ useEffect(() => {
                     {cartItems[product.id].quantity}
                   </span>
                   <button
-                    onClick={() => incrementQuantity(product.id)}
+                    onClick={async () => {
+                    try {
+                      await incrementQuantity(product.id);
+                    } catch (error) {
+                      if (error.message === "NOT_LOGGED_IN") {
+                        navigate("/login");
+                      } else {
+                        console.error(error);
+                      }
+                    }
+                  }}
                     style={{ backgroundColor: " #263238", border: "none", padding: "4px 8px", color:"white" }}
                   >
                     +
@@ -156,7 +176,17 @@ useEffect(() => {
                 <button
                 className="view-all-btn btn"
                 disabled={product.quantity <= 0}
-                  onClick={() => addToCart(product.id)}
+                  onClick={async () => {
+                try {
+                  await addToCart(product.id);
+                } catch (error) {
+                  if (error.message === "NOT_LOGGED_IN") {
+                    navigate("/login");
+                  } else {
+                    console.error(error);
+                  }
+                }
+              }}
                 >
                   {product.quantity <= 0 ? "Soldout" : "Add Cart"}
                 </button>

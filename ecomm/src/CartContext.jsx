@@ -44,8 +44,7 @@ export const CartProvider = ({ children }) => {
   // Add to cart
   const addToCart = async (productId) => {
    if (!token) {
-      navigate("/login");
-      return;
+      throw new Error("NOT_LOGGED_IN");
     }
     try {
       const res = await api.post(
@@ -68,8 +67,7 @@ export const CartProvider = ({ children }) => {
   // Increment quantity
   const incrementQuantity = async (productId) => {
    if (!token) {
-      navigate("/login");
-      return;
+      throw new Error("NOT_LOGGED_IN");
     }
     const newQuantity = (cartItems[productId]?.quantity || 0) + 1;
     try {
@@ -91,8 +89,7 @@ export const CartProvider = ({ children }) => {
   // Decrement quantity
   const decrementQuantity = async (productId) => {
    if (!token) {
-      navigate("/login");
-      return;
+      throw new Error("NOT_LOGGED_IN");
     }
     const newQuantity = (cartItems[productId]?.quantity || 1) - 1;
     if (newQuantity === 0) {
