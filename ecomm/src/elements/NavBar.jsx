@@ -28,12 +28,17 @@ useEffect(() => {
   return () => window.removeEventListener("resize", handleResize);
 }, []);
 
+const [showHomeTip, setShowHomeTip] = useState(() => {
+  return localStorage.getItem("homeTipShown") !== "true";
+});
+
+
 
   return (
     <>
     <nav className="navbar navbar-dark bg-dark fixed-top shadow-sm">
       <div className="container">
-        <Link className="navbar-brand fw-bold fs-4" to="/">
+        <Link className="navbar-brand fw-bold fs-4" to="/" title="Click to go Home">
         <span className="brand-text">Bombay Corner</span>
         </Link>
 
@@ -146,6 +151,30 @@ useEffect(() => {
 )}
 
     </div>
+
+    {showHomeTip && (
+  <div className="home-tip-banner">
+    🏠 Tip: Click on <strong>Bombay Corner</strong> to go Home!
+    <button 
+      onClick={() => {
+        setShowHomeTip(false);
+        localStorage.setItem("homeTipShown", "true");
+      }}
+      style={{
+        marginLeft: "10px",
+        background: "#f0ad4e",
+        border: "none",
+        padding: "4px 10px",
+        borderRadius: "5px",
+        color: "white",
+        fontSize: "0.9rem"
+      }}
+    >
+      Got it
+    </button>
+  </div>
+)}
+
     </>
   );
 };

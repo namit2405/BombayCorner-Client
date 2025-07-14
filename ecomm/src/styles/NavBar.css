@@ -304,3 +304,40 @@
     margin-right: 18px !important;
   }
 }
+.home-tip-banner {
+  background: #fffbeb;
+  padding: 10px 15px;
+  color: #333;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+.home-tip-banner button {
+  margin-left: 10px;
+  background: #f0ad4e;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .home-tip-banner {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+
+  .home-tip-banner button {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
