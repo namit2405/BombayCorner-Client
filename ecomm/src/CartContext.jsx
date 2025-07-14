@@ -14,7 +14,8 @@ export const CartProvider = ({ children }) => {
   // Fetch cart from backend
   const fetchCart = async () => {
    if (!token) {
-      navigate("/login");
+      // navigate("/login");
+      setCartItems({});
       return;
     }
     try {
